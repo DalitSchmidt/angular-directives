@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Colors</title>
+
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body ng-app="Colors">
+        <main class="container" ng-controller="MainController">
+            <div id="info-bar" ng-show="active !== null">
+                <dl>
+                    <dt>HSL</dt>
+                    <dd>{{active.hsl}}</dd>
+                    <dt>RGB</dt>
+                    <dd>{{active.rgb}}</dd>
+                    <dt>Description</dt>
+                    <dd>{{active.description}}</dd>
+                </dl>
+            </div>
+
+            <color class="color" hex="{{color.hex}}" ng-style="{'background-color': color.hex}" ng-click="setNewColor(color.id)"
+                   ng-repeat="color in data">
+            </color>
+
+            <a href="#!/list">List</a>
+            <a href="#!/home">Home</a>
+
+            <section>
+                <ng-view></ng-view>
+            </section>
+        </main>
+
+        <script src="vendor/jquery-3.2.1.js"></script>
+        <script src="vendor/angular.min.js"></script>
+        <script src="vendor/angular-route.js"></script>
+        <script src="app/Application.js"></script>
+        <script src="app/MainController.js"></script>
+        <script src="app/ColorDirective.js"></script>
+        <script src="app/AppConfig.js"></script>
+    </body>
+</html>
